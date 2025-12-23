@@ -22,3 +22,5 @@ tell' (x:y:_) = "Wow! List is big! Here are the first two elements: " ++ show x 
 firstLetter :: String -> String
 firstLetter "" = "No string!"
 firstLetter all@(x:xs) = "First letter of " ++ all ++ " is " ++ [x]
+
+
