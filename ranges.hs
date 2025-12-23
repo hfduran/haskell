@@ -11,3 +11,6 @@ takeOdds2 = take 5 myOdds2
 
 myLenght :: String -> Integer
 myLenght xs = sum [1 | _ <- xs]
+
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
