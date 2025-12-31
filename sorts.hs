@@ -5,6 +5,14 @@ quicksort (x : xs) =
       biggerSorted = quicksort [b | b <- xs, b > x]
    in smallerSorted ++ [x] ++ biggerSorted
 
+-- quicksort with filter:
+quicksort1 :: (Ord a) => [a] -> [a]
+quicksort1 [] = []
+quicksort1 (x : xs) =
+  let smallerSorted = quicksort1 (filter (<= x) xs)
+      biggerSorted = quicksort1 (filter (> x) xs)
+   in smallerSorted ++ [x] ++ biggerSorted
+
 mergesort :: (Ord a) => [a] -> [a]
 mergesort [] = []
 mergesort [x] = [x]
@@ -17,6 +25,6 @@ mergesort xs =
 merge :: (Ord a) => [a] -> [a] -> [a]
 merge xs [] = xs
 merge [] ys = ys
-merge (x:xs) (y:ys)
-  | x <= y = x : merge xs (y:ys)
-  | otherwise = y : merge (x:xs) ys
+merge (x : xs) (y : ys)
+  | x <= y = x : merge xs (y : ys)
+  | otherwise = y : merge (x : xs) ys
